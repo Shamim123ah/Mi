@@ -47,14 +47,14 @@ You should check the permission before you read anything from the module. You sh
 ```java
 public class XposedInit implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXposedHookInitPackageResources {
 
-    private static SharedPreferences getPref(String path) {
+    private static XSharedPreferences getPref(String path) {
         XSharedPreferences pref = new XSharedPreferences(BuildConfig.APPLICATION_ID, path);
         return pref.getFile().canRead() ? pref : null;
     }
 
     @Override
     public void initZygote(IXposedHookZygoteInit.StartupParam startupParam) {
-        SharedPreferences pref = getPref("zygote_conf");
+        XSharedPreferences pref = getPref("zygote_conf");
         if (pref != null) {
             // do things with it
         } else {
@@ -64,7 +64,7 @@ public class XposedInit implements IXposedHookLoadPackage, IXposedHookZygoteInit
 
     @Override
     public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpparam) {
-        SharedPreferences pref;
+        XSharedPreferences pref;
         switch (lpparam.packageName) {
             case PACKAGE_NAME_A:
                 pref = getPref("a_conf");
@@ -104,7 +104,7 @@ public class XposedInit implements IXposedHookLoadPackage, IXposedHookZygoteInit
 class XposedInit : IXposedHookLoadPackage, IXposedHookZygoteInit, IXposedHookInitPackageResources {
 
     companion object {
-        fun getPref(path: String) : SharedPreferences? {
+        fun getPref(path: String) : XSharedPreferences? {
             val pref = XSharedPreferences(BuildConfig.APPLICATION_ID, path)
             return if(pref.file.canRead()) pref else null
         }
