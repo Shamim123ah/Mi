@@ -48,7 +48,7 @@ You should check the permission before you read anything from the module. You sh
 public class XposedInit implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXposedHookInitPackageResources {
 
     private static SharedPreferences getPref(String path) {
-        SharedPreferences pref = new XSharedPreferences(BuildConfig.APPLICATION_ID, path);
+        XSharedPreferences pref = new XSharedPreferences(BuildConfig.APPLICATION_ID, path);
         return pref.getFile().canRead() ? pref : null;
     }
 
