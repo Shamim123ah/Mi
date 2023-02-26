@@ -5,7 +5,7 @@ This is a brief document about developing Xposed Modules using modern Xposed API
 ### API Changes
 Compared to the legacy XposedBridge APIs, the modern API has the following differences:
 1. Java entry now uses `META-INF/xposed/java_init.list` instead of `assets/xposed_init`; native entry now uses `META-INF/xposed/native_init.list`. Create a file in `src/main/resources/META-INF`, and Gradle will automatically package files into your APK. You should now be able to obfuscate your entry classes with R8 with proguard rules `adaptresourcefilenames`.
-1. Modern API does not use metadata anymore as well. Module name uses the `android:label` resource; module description uses the `android:description` resource; scope list uses `META-INF/xposed/scope.list` (one line for one package name); module configuration uses `META-INF/xposed/module.prop` in format of [Java properties](https://docs.oracle.com/javase/7/docs/api/java/util/Properties.html). 
+1. Modern API does not use metadata anymore as well. Module name uses the `android:label` resource; module description uses the `android:description` resource; scope list uses `META-INF/xposed/scope.list` (one line for one package name); module configuration uses `META-INF/xposed/module.prop` (in format of [Java properties](https://docs.oracle.com/javase/7/docs/api/java/util/Properties.html)). 
 1. Java entry should now implement `io.github.libxposed.XposedModule`. Each entry is a limited `android.content.Context`, providing a more familiar way for developers to handle. Most interfaces are not implemented by the `XposedModule` context, but will open more in the future. You can submit feature request with proper reason for a specific method.
 1. Hook APIs are new but intentionally kept simple. We no longer provide interfaces like `XposedHelpers` in the framework anymore. But we will offer official libraries for a more friendly development kit. See [libxposed/helper](https://github.com/libxposed/helper) for this developing library.
 1. You can now deoptmize a specific method to bypass method inline (especially when hooking System Framework)
@@ -13,7 +13,7 @@ Compared to the legacy XposedBridge APIs, the modern API has the following diffe
 1. You can communicate to the Xposed framework now. With the help of this feature, you can **dynamically request scope**, **share SharedPreference or blob file** across your module and hooked app, **check framework's name and version**, and more... To achieve this, you should declare a Xposed service in your module, and once your module is launched, the xposed framework will send you a service to communicate with the framework. See [libxposed/serivce](https://github.com/libxposed/service) for more details.
 1. You can now anaylize a dex by using `DexParser` API, which helps you to deobfuscate an Application and find the hook point, and to find caller of hooked methods for deoptimization to bypass method inline.
 
-Module configuration use entries as following:
+Module configuration uses entries as following:
 |Name|Format|Optional|Meaning|
 |:-|:-|:-|:-|
 |minApiVersion|int|No|Indicates the minimal Xposed API version required by the module|
