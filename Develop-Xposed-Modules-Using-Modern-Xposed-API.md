@@ -11,7 +11,7 @@ Compared to the legacy XposedBridge APIs, the modern API has the following diffe
 1. You can now deoptmize a specific method to bypass method inline (especially when hooking System Framework)
 1. Resource hooks are removed. Since we provide `XposedModule` context now, you can easily get the resource of your module. You can choice a better hook point to inject/modify the host resource.
 1. You can communicate to the Xposed framework now. With the help of this feature, you can **dynamically request scope**, **share SharedPreference or blob file** across your module and hooked app, **check framework's name and version**, and more... To achieve this, you should declare a Xposed service in your module, and once your module is launched, the xposed framework will send you a service to communicate with the framework. See [libxposed/service](https://github.com/libxposed/service) for more details.
-1. You can now anaylize a dex by using `DexParser` API, which helps you to deobfuscate an Application and find the hook point, and to find caller of hooked methods for deoptimization to bypass method inline.
+1. You can now analyze a dex by using `DexParser` API, which helps you to deobfuscate an Application and find the hook point, and to find caller of hooked methods for deoptimization to bypass method inline.
 
 Module configuration uses entries as following:
 |Name|Format|Optional|Meaning|
