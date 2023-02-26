@@ -10,3 +10,12 @@ Compared to the legacy XposedBridge APIs, the modern API has the following diffe
 1. Hook APIs are new but intentionally kept simple. We no longer provide interfaces like `XposedHelpers` in the framework anymore. But we will offer official libraries for a more friendly development kit. See [libxposed/helper](https://github.com/libxposed/helper) for this developing library.
 1. Resource hooks are removed. Since we provide `XposedModule` context now, you can easily get the resource of your module. You can choice a better hook point to inject/modify the host resource.
 1. You can communicate to the Xposed framework now. With the help of this feature, you can **dynamically request scope**, **share SharedPreference or blob file** across your module and hooked app, **check framework's name and version**, and more... To achieve this, you should declare a Xposed service in your module, and once your module is launched, the xposed framework will send you a service to communicate with the framework. See [libxposed/serivce](https://github.com/libxposed/service) for more details.
+
+### Early Access
+Note that most things are unstable, untested. APIs are likely to change in the feature. But you can still try them in your module if you need some of the new features. Please don't release a stable release until the new APIs are stable.
+The current development status of all components are listed below.
+|Componment|Usage|Repository|Status|
+|LSPosed|Implement API and service|https://github.com/LSPosed/LSPosed|Done|
+|API|User interface for hooks|https://github.com/libxposed/api|Done; undocumented and may change|
+|Service|Service to communicate with the Xposed Framework|https://github.com/libxposed/service|PoC; likely to change in the feature, but you can use the raw binder API, which should be less likely to change|
+|Helper|Utils to find classes fields, methods and kotlinize APIs|https://github.com/libxposed/helper|Developing; DSL APIs are designed but not yet implemented|
