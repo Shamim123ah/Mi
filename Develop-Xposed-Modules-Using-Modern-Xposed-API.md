@@ -8,8 +8,11 @@ Compared to the legacy XposedBridge APIs, the modern API has the following diffe
 1. Modern API does not use metadata anymore as well. Module name uses the `android:label` resource; module description uses the `android:description` resource; minversion uses `META-INF/xposed/minversion`; scope list uses `META-INF/xposed/scope` (one line for one package name); targetversion is introduced and uses `META-INF/xposed/targetversion`.
 1. Java entry should now implement `io.github.libxposed.XposedModule`. Each entry is a limited `android.content.Context`, providing a more familiar way for developers to handle. Most interfaces are not implemented by the `XposedModule` context, but will open more in the future. You can submit feature request with proper reason for a specific method.
 1. Hook APIs are new but intentionally kept simple. We no longer provide interfaces like `XposedHelpers` in the framework anymore. But we will offer official libraries for a more friendly development kit. See [libxposed/helper](https://github.com/libxposed/helper) for this developing library.
+1. You can now deoptmize a specific method to bypass method inline (especially when hooking System Framework)
 1. Resource hooks are removed. Since we provide `XposedModule` context now, you can easily get the resource of your module. You can choice a better hook point to inject/modify the host resource.
 1. You can communicate to the Xposed framework now. With the help of this feature, you can **dynamically request scope**, **share SharedPreference or blob file** across your module and hooked app, **check framework's name and version**, and more... To achieve this, you should declare a Xposed service in your module, and once your module is launched, the xposed framework will send you a service to communicate with the framework. See [libxposed/serivce](https://github.com/libxposed/service) for more details.
+1. You can now anaylize a dex by using `DexParser` API, which helps you to deobfuscate an Application and find the hook point, and to find caller of hooked methods for deoptimization to bypass method inline.
+
 
 ### Early Access
 Note that most things are unstable, untested. APIs are likely to change in the feature. But you can still try them in your module if you need some of the new features. Please don't release a stable release until the new APIs are stable.
