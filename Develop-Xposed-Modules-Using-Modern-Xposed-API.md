@@ -14,7 +14,9 @@ Compared to the legacy XposedBridge APIs, the modern API has the following diffe
 ### Early Access
 Note that most things are unstable, untested. APIs are likely to change in the feature. But you can still try them in your module if you need some of the new features. Please don't release a stable release until the new APIs are stable.
 The current development status of all components are listed below.
+
 |Componment|Usage|Repository|Status|
+|:-|:-|:-|:-|
 |LSPosed|Implement API and service|https://github.com/LSPosed/LSPosed|Done|
 |API|User interface for hooks|https://github.com/libxposed/api|Done; undocumented and may change|
 |Service|Service to communicate with the Xposed Framework|https://github.com/libxposed/service|PoC; likely to change in the feature, but you can use the raw binder API, which should be less likely to change|
