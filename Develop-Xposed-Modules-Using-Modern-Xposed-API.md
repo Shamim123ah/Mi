@@ -27,10 +27,10 @@ The current development status of all components are listed below.
 
 |Componment|Usage|Repository|Status|
 |:-|:-|:-|:-|
-|LSPosed|Implement API and service|https://github.com/LSPosed/LSPosed|Done|
-|API|User interface for hooks|https://github.com/libxposed/api|Done; undocumented and may change|
-|Service|Service to communicate with the Xposed Framework|https://github.com/libxposed/service|PoC; likely to change in the feature, but you can use the raw binder API, which should be less likely to change|
-|Helper|Utils to find classes fields, methods and kotlinize APIs|https://github.com/libxposed/helper|Developing; DSL APIs are designed but not yet implemented|
+|LSPosed|Implement API and service; you don't need to declaring any dependency for it.|https://github.com/LSPosed/LSPosed|Done|
+|API|User interface for hooks; you should declare it as dependency as `compileOnly`; don't use it together with the legacy `XposedBridge`|https://github.com/libxposed/api|Done; undocumented and may change|
+|Service|Service to communicate with the Xposed Framework; you should depend on it by `implementation`|https://github.com/libxposed/service|PoC; likely to change in the feature, but you can use the raw binder API, which should be less likely to change|
+|Helper|Utils to find classes fields, methods and kotlinize APIs; it should be depended by `implementation`|https://github.com/libxposed/helper|Developing; DSL APIs are designed but not yet implemented|
 
 Aforementioned libraries will be published to maven central repository  when stabilized, but **not now**! They offer an CI version in Github Action. Download the artifacts, and merge it with your local maven repository (see more about [mavenLocal](https://docs.gradle.org/current/userguide/declaring_repositories.html#sec:case-for-maven-local)) or use the raw aar.
 
