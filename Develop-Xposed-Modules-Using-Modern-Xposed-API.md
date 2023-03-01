@@ -28,7 +28,7 @@ The current development status of all components are listed below.
 |Componment|Usage|Repository|Status|
 |:-|:-|:-|:-|
 |LSPosed|Implement API and service; you don't need to declaring any dependency for it.|https://github.com/LSPosed/LSPosed|Done|
-|API|User interface for hooks; you should declare it as dependency as `compileOnly`; don't use it together with the legacy `XposedBridge`|https://github.com/libxposed/api|Done; undocumented and may change|
+|API|User interface for hooks; you should declare it as dependency by `compileOnly`; don't use it together with the legacy `XposedBridge`|https://github.com/libxposed/api|Done; undocumented and may change|
 |Service|Service to communicate with the Xposed Framework; you should depend on it by `implementation`|https://github.com/libxposed/service|PoC; likely to change in the feature, but you can use the raw binder API, which should be less likely to change|
 |Helper|Utils to find classes fields, methods and kotlinize APIs; it should be depended by `implementation`|https://github.com/libxposed/helper|Developing; DSL APIs are designed but not yet implemented|
 
