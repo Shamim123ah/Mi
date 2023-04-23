@@ -1,6 +1,6 @@
 ## Installation
-1. Make sure you have [Magisk](https://topjohnwu.github.io/Magisk/install.html) 24.0+ 
-1. For zygisk favor enable zygisk in Magisk APP, for Riru favor install [Riru](https://github.com/RikkaApps/Riru#install) 26.1.7+ on your device.
+1. Make sure you have [Magisk](https://topjohnwu.github.io/Magisk/install.html) 24.0+ installed on your device.
+1. For zygisk favor enable zygisk in Magisk APP, for Riru favor install [Riru](https://github.com/RikkaApps/Riru#install) 26.1.7+.
 1. Go to Magisk's `Modules` tab, search, and install LSPosed.
 1. Reboot your device and wait for a while, you will see the LSPosed icon.
 1. Launch LSPosed and check the activation status.
