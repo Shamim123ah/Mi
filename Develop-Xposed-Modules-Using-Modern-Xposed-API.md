@@ -21,6 +21,13 @@ Module configuration uses entries as following:
 |targetApiVersion|int|No|Indicates the target Xposed API version required by the module|
 |staticScope|boolean|Yes|Indicates whether users should not apply the module on any other app out of scope|
 
+Comparison among content sharing APIs:
+|Name|API|Supported|Storage Location|Change Listener|Large Content|
+|:-:|:-:|:-:|:-|:-:|:-:|
+|[New XSharedPreferences](https://github.com/LSPosed/LSPosed/wiki/New-XSharedPreferences)|Legacy(ext)|❌ Since v2.1.0|/data/misc/\<random\>/prefs/\<module\>|❌|❌|
+|[XSharedPreferences](https://api.xposed.info/reference/de/robv/android/xposed/XSharedPreferences.html)|Legacy|✅ Since v2.0.0|Module apps' internal storage|❌|❌|
+|Remote Preferences|Modern|✅ Since v1.9.0|LSPosed database|✅|❌|
+|Remote Files|Modern|✅ Since v1.9.0|/data/adb/lspd/modules/\<user\>/\<module\>|❌|✅|
 
 ### Early Access
 Note that most things are unstable, untested. APIs are likely to change in the feature. But you can still try them in your module if you need some of the new features. Please don't release a stable release until the new APIs are stable.
